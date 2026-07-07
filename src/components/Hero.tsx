@@ -15,7 +15,7 @@ const FRUITS = [
     desc: "A tropical escape in every bite. Sweet mangoes, fresh coconut, and crunchy granola.",
     price: "$12.99",
     bowlImg: "/mango-bowl.png",
-    scale: "scale-100"
+    scale: 1
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const FRUITS = [
     desc: "A powerful mix of strawberries, raspberries, and açaí for an antioxidant boost.",
     price: "$11.99",
     bowlImg: "/strawberry-bowl.png",
-    scale: "scale-[1.6]"
+    scale: 1.6
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const FRUITS = [
     desc: "Fresh green kiwi mixed with matcha and spirulina for a vibrant start.",
     price: "$13.99",
     bowlImg: "/kiwi-bowl.png",
-    scale: "scale-[1.85]"
+    scale: 1.85
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const FRUITS = [
     desc: "Vibrant dragon fruit blended with coconut water and chia seeds.",
     price: "$14.99",
     bowlImg: "/pitaya-bowl.png", // Used placeholder
-    scale: "scale-[1.25]"
+    scale: 1.25
   },
 ];
 
@@ -184,7 +184,10 @@ export default function Hero() {
             ref={bowlRef}
             className="relative w-full h-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)] pointer-events-auto"
           >
-            <div className={`relative w-full h-full transition-transform duration-700 ${activeFruit.scale}`}>
+            <div 
+              className="relative w-full h-full transition-transform duration-700"
+              style={{ transform: `scale(${activeFruit.scale})` }}
+            >
               <Image
                 key={activeFruit.id}
                 src={activeFruit.bowlImg}
