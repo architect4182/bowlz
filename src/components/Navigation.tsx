@@ -13,7 +13,7 @@ export default function Navigation() {
           className="magnetic inline-flex items-center justify-center px-6 h-12 rounded-full border border-white/20 hover:border-white/50 transition-colors"
           data-cursor-text=""
         >
-          <span className="font-bold text-lg">BOLWZ</span>
+          <span className="font-bold text-lg">BOWLZ</span>
         </Link>
       </div>
 

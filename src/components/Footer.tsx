@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16 mb-16 md:mb-24">
         <div className="flex-1">
           <h3 className="text-4xl font-black mb-6">STAY FRESH.</h3>
-          <p className="text-gray-400 mb-8 max-w-sm">Join the BOLWZ club for exclusive drops, secret menu items, and fresh news.</p>
+          <p className="text-gray-400 mb-8 max-w-sm">Join the BOWLZ club for exclusive drops, secret menu items, and fresh news.</p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-2 w-full max-w-md">
             <input 
               type="email" 
@@ -38,10 +38,10 @@ export default function Footer() {
       
       <div className="max-w-7xl mx-auto flex flex-col items-center border-t border-white/10 pt-16">
         <h1 className="text-[20vw] md:text-[15vw] font-black leading-none tracking-tighter text-white/5 selection:bg-transparent pointer-events-none">
-          BOLWZ
+          BOWLZ
         </h1>
         <div className="w-full flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm mt-8 gap-4 text-center md:text-left">
-          <p>© 2026 BOLWZ. All rights reserved.</p>
+          <p>© 2026 BOWLZ. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

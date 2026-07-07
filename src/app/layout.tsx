@@ -9,7 +9,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "BOLWZ",
+  title: "BOWLZ",
   description: "Premium Smoothie Bowls.",
 };
 
