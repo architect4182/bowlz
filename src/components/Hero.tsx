@@ -12,10 +12,16 @@ const FRUITS = [
     gradient: "from-[#FDB515] to-[#E38D00]",
     bgColor: "#FDB515",
     btnColor: "text-[#E38D00]",
-    desc: "A tropical escape in every bite. Sweet mangoes, fresh coconut, and crunchy granola.",
+    desc: "A tropical escape in every bite. Sweet mangoes, banana slices, fresh blueberries, and crunchy granola.",
     price: "$12.99",
     bowlImg: "/mango-bowl.png",
-    scale: 1
+    scale: 1.1,
+    ingredients: [
+      { image: "/ingredients/mango_chunk_1783480140724.png", label: "Mango", style: "top-[10%] left-[0%] md:left-[-10%]" },
+      { image: "/ingredients/banana_slice_1783480169380.png", label: "Banana", style: "bottom-[15%] right-[0%] md:right-[-10%]" },
+      { image: "/ingredients/blueberry_1783480150557.png", label: "Blueberries", style: "top-[20%] right-[5%] md:right-[-5%]" },
+      { image: "/ingredients/granola_1783480159794.png", label: "Granola", style: "bottom-[20%] left-[5%] md:left-[-5%]" },
+    ]
   },
   {
     id: 2,
@@ -23,10 +29,17 @@ const FRUITS = [
     gradient: "from-[#F86E73] to-[#E5484D]",
     bgColor: "#F86E73",
     btnColor: "text-[#E5484D]",
-    desc: "A powerful mix of strawberries, raspberries, and açaí for an antioxidant boost.",
+    desc: "A powerful mix of strawberries, blueberries, banana, chia seeds, and crunchy granola.",
     price: "$11.99",
     bowlImg: "/strawberry-bowl.png",
-    scale: 1
+    scale: 1.1,
+    ingredients: [
+      { image: "/ingredients/strawberry_1783480179099.png", label: "Strawberry", style: "top-[10%] left-[0%] md:left-[-10%]" },
+      { image: "/ingredients/blueberry_1783480150557.png", label: "Blueberries", style: "bottom-[15%] right-[0%] md:right-[-10%]" },
+      { image: "/ingredients/banana_slice_1783480169380.png", label: "Banana", style: "top-[20%] right-[5%] md:right-[-5%]" },
+      { image: "/ingredients/granola_1783480159794.png", label: "Granola", style: "bottom-[20%] left-[5%] md:left-[-5%]" },
+      { image: "/ingredients/chia_seeds_1783480188705.png", label: "Chia Seeds", style: "top-[45%] left-[-5%] md:left-[-15%]" },
+    ]
   },
   {
     id: 3,
@@ -34,21 +47,31 @@ const FRUITS = [
     gradient: "from-[#8ED94D] to-[#76B93B]",
     bgColor: "#8ED94D",
     btnColor: "text-[#76B93B]",
-    desc: "Fresh green kiwi mixed with matcha and spirulina for a vibrant start.",
+    desc: "Fresh green kiwi mixed with sweet pineapple chunks and kiwi seeds for a vibrant start.",
     price: "$13.99",
     bowlImg: "/kiwi-bowl.png",
-    scale: 1
+    scale: 1.1,
+    ingredients: [
+      { image: "/ingredients/kiwi_slice_1783480208543.png", label: "Kiwi", style: "top-[10%] left-[0%] md:left-[-10%]" },
+      { image: "/ingredients/pineapple_chunk_1783480217742.png", label: "Pineapple", style: "bottom-[15%] right-[0%] md:right-[-10%]" },
+      { image: "/ingredients/chia_seeds_1783480188705.png", label: "Kiwi Seeds", style: "top-[20%] right-[5%] md:right-[-5%]" },
+    ]
   },
   {
     id: 4,
-    name: "PITAYA",
+    name: "BLUEBERRY",
     gradient: "from-[#D64AFF] to-[#B82EE5]",
     bgColor: "#D64AFF",
     btnColor: "text-[#B82EE5]",
-    desc: "Vibrant dragon fruit blended with coconut water and chia seeds.",
+    desc: "Blueberry base topped with fresh blueberries, crunchy granola, and almond flakes.",
     price: "$14.99",
     bowlImg: "/pitaya-bowl.png", // Used placeholder
-    scale: 1
+    scale: 1.3,
+    ingredients: [
+      { image: "/ingredients/blueberry_1783480150557.png", label: "Blueberries", style: "top-[10%] left-[0%] md:left-[-10%]" },
+      { image: "/ingredients/almond_flake_1783480227848.png", label: "Almond Flakes", style: "bottom-[15%] right-[0%] md:right-[-10%]" },
+      { image: "/ingredients/granola_1783480159794.png", label: "Granola", style: "top-[20%] right-[5%] md:right-[-5%]" },
+    ]
   },
 ];
 
@@ -60,6 +83,7 @@ export default function Hero() {
   const textRef = useRef<HTMLHeadingElement>(null);
   const bowlRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const ingredientsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   // Update body background color when active fruit changes
   useEffect(() => {
@@ -74,15 +98,36 @@ export default function Hero() {
       gsap.set(textRef.current, { scale: 0.8, opacity: 0 });
       gsap.set(bowlRef.current, { scale: 0.5, rotation: -45, opacity: 0 });
       gsap.set(contentRef.current, { x: -50, opacity: 0 });
+      gsap.set(ingredientsRef.current, { scale: 0, opacity: 0 });
 
 
       tl.to(containerRef.current, { opacity: 1, duration: 0.2 })
         .to(textRef.current, { scale: 1, opacity: 0.9, duration: 0.8, ease: "power3.out" }, "-=0.1")
         .to(bowlRef.current, { scale: 1, rotation: 0, opacity: 1, duration: 1, ease: "elastic.out(1, 0.7)" }, "-=0.6")
         .to(textRef.current, { opacity: 0.4, duration: 0.5 }, "-=0.4")
-        .to(contentRef.current, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.6");
+        .to(contentRef.current, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.6")
+        .to(ingredientsRef.current, { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.5)" }, "-=0.8");
     }, containerRef);
     return () => ctx.revert();
+  }, []);
+
+  // Floating animation for ingredients
+  useEffect(() => {
+    const floatCtx = gsap.context(() => {
+      ingredientsRef.current.forEach((el, i) => {
+        if (el) {
+          gsap.to(el, {
+            y: i % 2 === 0 ? "-=15" : "+=15",
+            rotation: i % 2 === 0 ? 5 : -5,
+            duration: 2 + i * 0.2,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut"
+          });
+        }
+      });
+    }, containerRef);
+    return () => floatCtx.revert();
   }, []);
 
 
@@ -96,6 +141,9 @@ export default function Hero() {
     // Animate out
     gsap.to(bowlRef.current, {
       scale: 0.5, opacity: 0, rotation: dir === "next" ? 45 : -45, duration: 0.4, ease: "power2.in"
+    });
+    gsap.to(ingredientsRef.current, {
+      scale: 0, opacity: 0, duration: 0.3, stagger: 0.05, ease: "power2.in"
     });
     gsap.to(textRef.current, {
       opacity: 0, scale: 0.9, y: dir === "next" ? -20 : 20, duration: 0.3, ease: "power2.in"
@@ -113,6 +161,10 @@ export default function Hero() {
       gsap.fromTo(bowlRef.current,
         { scale: 0.5, opacity: 0, rotation: dir === "next" ? -45 : 45 },
         { scale: 1, opacity: 1, rotation: 0, duration: 0.8, ease: "elastic.out(1, 0.7)" }
+      );
+      gsap.fromTo(ingredientsRef.current,
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.5)", delay: 0.2 }
       );
       gsap.fromTo(textRef.current,
         { opacity: 0, scale: 0.9, y: dir === "next" ? 20 : -20 },
@@ -184,7 +236,7 @@ export default function Hero() {
             ref={bowlRef}
             className="relative w-full h-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.5)] pointer-events-auto"
           >
-            <div 
+            <div
               className="relative w-full h-full transition-transform duration-700"
               style={{ transform: `scale(${activeFruit.scale})` }}
             >
@@ -197,6 +249,19 @@ export default function Hero() {
                 className="object-contain"
                 priority
               />
+              {/* Floating Ingredients */}
+              {activeFruit.ingredients.map((ing, i) => (
+                <div
+                  key={i}
+                  ref={(el) => { ingredientsRef.current[i] = el; }}
+                  className={`absolute ${ing.style} flex items-center gap-2 md:gap-3 bg-white/20 backdrop-blur-md p-1 pr-3 md:pr-4 rounded-full text-white text-xs md:text-sm font-bold shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/30 z-20 pointer-events-none`}
+                >
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-white/60 shadow-inner bg-white shrink-0 flex items-center justify-center">
+                    <Image src={(ing as any).image} alt={ing.label} width={40} height={40} className="w-[120%] h-[120%] max-w-none object-cover" />
+                  </div>
+                  <span className="drop-shadow-md whitespace-nowrap tracking-wide">{ing.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
