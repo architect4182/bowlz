@@ -45,7 +45,7 @@ export default function CartPanel() {
           {/* Sample Item */}
           <div className="flex gap-4 items-center group">
             <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-gray-100">
-              <Image src="https://images.unsplash.com/photo-1494597564530-871f2b93ac55?q=80&w=200&auto=format&fit=crop" alt="Bowl" fill className="object-cover" />
+              <Image src="/mango-bowl.png" alt="Bowl" fill className="object-cover" />
             </div>
             <div className="flex-1">
               <h3 className="font-bold">Mango Sunrise</h3>
