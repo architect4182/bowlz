@@ -66,7 +66,7 @@ const FRUITS = [
     desc: "Blueberry base topped with fresh blueberries, crunchy granola, and almond flakes.",
     price: "$14.99",
     bowlImg: "/pitaya-bowl.png", // Used placeholder
-    scale: 1.3,
+    scale: 1,
     ingredients: [
       { image: "/ingredients/blueberry_1783480150557.png", label: "Blueberries", style: "top-[10%] left-[0%] md:left-[-10%]" },
       { image: "/ingredients/almond_flake_1783480227848.png", label: "Almond Flakes", style: "bottom-[15%] right-[0%] md:right-[-10%]" },
