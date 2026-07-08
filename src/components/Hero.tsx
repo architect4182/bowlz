@@ -26,7 +26,7 @@ const FRUITS = [
     desc: "A powerful mix of strawberries, raspberries, and açaí for an antioxidant boost.",
     price: "$11.99",
     bowlImg: "/strawberry-bowl.png",
-    scale: 1.6
+    scale: 1
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const FRUITS = [
     desc: "Fresh green kiwi mixed with matcha and spirulina for a vibrant start.",
     price: "$13.99",
     bowlImg: "/kiwi-bowl.png",
-    scale: 1.85
+    scale: 1
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const FRUITS = [
     desc: "Vibrant dragon fruit blended with coconut water and chia seeds.",
     price: "$14.99",
     bowlImg: "/pitaya-bowl.png", // Used placeholder
-    scale: 1.25
+    scale: 1
   },
 ];
 
